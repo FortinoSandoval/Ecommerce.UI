@@ -57,17 +57,14 @@ export class AdminLoginComponent implements OnInit {
     }
 
     this.loading = true;
-    console.log(this.f.username.value);
     this.authService
       .login(this.f.username.value, this.f.password.value)
       .pipe(first())
       .subscribe(
         data => {
-          console.log('aaaa');
-          this.router.navigate(['/admin']);
+          this.router.navigate([this.returnUrl]);
         },
         error => {
-          console.log('aqui');
           this.alertService.error(error);
           this.loading = false;
         }
