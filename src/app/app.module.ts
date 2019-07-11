@@ -12,6 +12,8 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,11 @@ import { MatButtonModule } from '@angular/material';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule
   ],
-  exports: [MatButtonModule],
+  exports: [MatButtonModule, MatCardModule, MatInputModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
