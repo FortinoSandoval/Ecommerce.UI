@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AlertService } from '../../services/alert.service';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -22,11 +21,9 @@ export class AdminLoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private alertService: AlertService
   ) {
-    // redirect to home if already logged in
     if (this.authService.currentUserValue) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/admin']);
     }
   }
 
@@ -48,9 +45,6 @@ export class AdminLoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    // reset alerts on submit
-    this.alertService.clear();
-
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
@@ -65,7 +59,6 @@ export class AdminLoginComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          this.alertService.error(error);
           this.loading = false;
         }
       );

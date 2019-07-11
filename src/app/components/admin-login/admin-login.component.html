@@ -18,6 +18,7 @@
       type="password"
       formControlName="password"
       class="form-control"
+      autocomplete="on"
       [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
     />
     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
@@ -32,6 +33,5 @@
       ></span>
       Login
     </button>
-    <a routerLink="/register" class="btn btn-link">Register</a>
   </div>
 </form>
