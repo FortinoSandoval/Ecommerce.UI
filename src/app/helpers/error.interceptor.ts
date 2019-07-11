@@ -19,14 +19,14 @@ export class ErrorInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
-      catchError(err => {
-        if (err.status === 401) {
+      catchError(res => {
+        if (res.status === 401 && res.error.code !== 'INVALID_CREDENTIALS') {
           // auto logout if 401 response returned from api
           this.authService.logout();
           location.reload(true);
         }
 
-        const error = err.error.message || err.statusText;
+        const error = res.error.message || res.statusText;
         return throwError(error);
       })
     );
