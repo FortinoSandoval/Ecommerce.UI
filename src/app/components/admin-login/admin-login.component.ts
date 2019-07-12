@@ -63,6 +63,7 @@ export class AdminLoginComponent implements OnInit {
           if (user.role !== 'ADMIN') {
             this.allowedUser = false;
             this.authService.logout(false);
+            this.loading = false;
             return;
           }
           this.router.navigate([this.returnUrl]);
