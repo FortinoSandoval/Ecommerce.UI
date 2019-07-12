@@ -22,11 +22,11 @@ export class ErrorInterceptor implements HttpInterceptor {
       catchError(res => {
         if (res.status === 401 && res.error.code !== 'INVALID_CREDENTIALS') {
           // auto logout if 401 response returned from api
-          this.authService.logout();
+          this.authService.logout('/');
           location.reload(true);
         }
 
-        const error = res.error.message || res.statusText;
+        const error = res.error || res.statusText;
         return throwError(error);
       })
     );

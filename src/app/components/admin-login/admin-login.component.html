@@ -1,54 +1,28 @@
-<mat-card>
+<mat-card class="login-form">
   <mat-card-title>Login</mat-card-title>
   <mat-card-content>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="username">Username</label>
-        <input
-          type="text"
-          formControlName="username"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
-        />
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Username" formControlName="username" />
+        </mat-form-field>
+        <mat-form-field class="full-width">
           <input
             matInput
-            placeholder="Email"
-            [formControl]="emailFormControl"
-            [errorStateMatcher]="matcher"
+            placeholder="Password"
+            formControlName="password"
+            type="password"
           />
-          <!-- <mat-hint>Errors appear instantly!</mat-hint>
-          <mat-error
-            *ngIf="
-              emailFormControl.hasError('email') &&
-              !emailFormControl.hasError('required')
-            "
-          >
-            Please enter a valid email address
-          </mat-error>
-          <mat-error *ngIf="emailFormControl.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error> -->
         </mat-form-field>
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-          <div *ngIf="f.username.errors.required">Username is required</div>
-        </div>
+        <mat-error *ngIf="invalidCredentials">
+          <small>Invalid username/password</small>
+        </mat-error>
+        <mat-error *ngIf="!allowedUser">
+          <small>User doesn't have enough rights</small>
+        </mat-error>
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          formControlName="password"
-          class="form-control"
-          autocomplete="on"
-          [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
-        />
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-          <div *ngIf="f.password.errors.required">Password is required</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">
+        <button mat-raised-button [disabled]="loading" color="primary">
           <span
             *ngIf="loading"
             class="spinner-border spinner-border-sm mr-1"

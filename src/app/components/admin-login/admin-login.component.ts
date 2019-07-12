@@ -15,6 +15,8 @@ export class AdminLoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
+  invalidCredentials = false;
+  allowedUser = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,7 +36,7 @@ export class AdminLoginComponent implements OnInit {
     });
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = '/admin';
   }
 
   // convenience getter for easy access to form fields
@@ -44,6 +46,8 @@ export class AdminLoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.invalidCredentials = false;
+    this.allowedUser = true;
 
     // stop here if form is invalid
     if (this.loginForm.invalid) {
@@ -55,10 +59,18 @@ export class AdminLoginComponent implements OnInit {
       .login(this.f.username.value, this.f.password.value)
       .pipe(first())
       .subscribe(
-        data => {
+        user => {
+          if (user.role !== 'ADMIN') {
+            this.allowedUser = false;
+            this.authService.logout(false);
+            return;
+          }
           this.router.navigate([this.returnUrl]);
         },
-        error => {
+        err => {
+          if (err.code === 'INVALID_CREDENTIALS') {
+            this.invalidCredentials = true;
+          }
           this.loading = false;
         }
       );
