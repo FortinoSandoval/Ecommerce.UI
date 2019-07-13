@@ -29,6 +29,10 @@ export class AuthService {
       .pipe(
         map(user => {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
+          if (user.role === 'ADMIN') {
+            user.permissions = '_0x2efd17';
+          }
+          delete user.role;
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
           return user;

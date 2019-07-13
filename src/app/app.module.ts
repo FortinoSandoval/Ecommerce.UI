@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { HomeComponent } from './components/home/home.component';
-import { AdminComponent } from './components/admin/admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +14,7 @@ import { MaterialModule } from './material.module';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ProductManagerComponent } from './components/product-manager/product-manager.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [

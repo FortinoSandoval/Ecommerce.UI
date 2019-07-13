@@ -60,7 +60,7 @@ export class AdminLoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         user => {
-          if (user.role !== 'ADMIN') {
+          if (user.permissions !== '_0x2efd17') {
             this.allowedUser = false;
             this.authService.logout(false);
             this.loading = false;
