@@ -20,7 +20,7 @@
         </li>
       </ul>
     </mat-sidenav>
-    <mat-sidenav-content class="sidebar-content">
+    <mat-sidenav-content class="sidebar-content" (click)="sidenav.close()">
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
