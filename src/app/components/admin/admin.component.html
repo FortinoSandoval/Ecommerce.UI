@@ -1,2 +1,19 @@
-<h1>admin works!</h1>
-<button mat-stroked-button>Sample button</button>
+<mat-toolbar color="primary" class="navbar">
+  <div>
+    <a mat-button (click)="sidenav.toggle()">
+      {{ sidenavOpen ? '-' : '+' }}
+    </a>
+    Admin
+  </div>
+  <div class="nav-links">
+    <span (click)="logout()">Logout</span>
+  </div>
+</mat-toolbar>
+<mat-sidenav-container class="sidebar-container">
+  <mat-sidenav class="side-nav" #sidenav mode="side" [(opened)]="sidenavOpen">
+    <h2>Navigation</h2>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet name="adminRouter"></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
