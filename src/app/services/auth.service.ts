@@ -40,6 +40,16 @@ export class AuthService {
       );
   }
 
+  isAdmin() {
+    return this.http
+      .get<any>(`${environment.apiUrl}/isadmin`)
+      .pipe(
+        map(isAdmin => {
+          return isAdmin;
+        })
+      );
+  }
+
   logout(redirectTo) {
     // remove user from local storage and set current user to null
     localStorage.removeItem('currentUser');

@@ -10,12 +10,11 @@ export class AdminComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
   sidenavOpen = false;
   ngOnInit() {
-    if (
-      JSON.parse(localStorage.getItem('currentUser')).permissions !==
-      '_0x2efd17'
-    ) {
-      this.router.navigate(['/']);
-    }
+    this.authService.isAdmin().subscribe(isAdmin => {
+      if (!isAdmin) {
+        this.router.navigate(['/']);
+      }
+    });
   }
   logout() {
     this.authService.logout('/');
