@@ -5,7 +5,9 @@ import {
   MatCardModule,
   MatInputModule,
   MatToolbarModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatTableModule,
+  MatPaginatorModule
 } from '@angular/material';
 
 const material = [
@@ -13,7 +15,9 @@ const material = [
   MatCardModule,
   MatInputModule,
   MatToolbarModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatTableModule,
+  MatPaginatorModule
 ];
 
 @NgModule({

@@ -15,6 +15,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { ProductManagerComponent } from './components/product-manager/product-manager.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ProductsTableComponent } from './components/products-table/products-table.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AdminComponent } from './components/admin/admin.component';
     AdminComponent,
     LogoutComponent,
     ProductManagerComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    ProductsTableComponent
   ],
   imports: [
     BrowserModule,
