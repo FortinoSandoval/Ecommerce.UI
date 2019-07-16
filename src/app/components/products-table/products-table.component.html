@@ -11,7 +11,7 @@
       <span *ngIf="column === 'actions'">
         <td mat-cell *matCellDef="let item">
           <span *ngFor="let action of actions">
-            <i class="material-icons action">
+            <i class="material-icons action" (click)="action === 'delete' ? delete(item.id) : update(item.id)">
               {{ action === 'delete' ? 'delete' : 'edit' }}
             </i>
           </span>
