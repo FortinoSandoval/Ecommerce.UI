@@ -1,1 +1,5 @@
-<app-products-table [products]="products"></app-products-table>
+<app-products-table
+  [items]="products"
+  [displayedColumns]="['name', 'description', 'quantity', 'price', 'category']"
+  [actions]="['delete', 'update']"
+></app-products-table>

@@ -15,26 +15,48 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./products-table.component.less']
 })
 export class ProductsTableComponent implements OnInit {
-  @Input() products: Array<Product>;
+  @Input() items: any[];
+  @Input() displayedColumns: string[];
+  @Input() actions: string[];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  productItems;
+  dataSource;
+  columns;
 
-  displayedColumns: string[] = [
-    'name',
-    'description',
-    'quantity',
-    'price',
-    'category'
-  ];
   constructor() {}
 
   ngOnInit() {}
 
+  handleActions(actions) {
+    if (actions.length === 0) return;
+    actions.forEach((action, index) => {
+      action.toLowerCase();
+      if (action !== 'delete' && action !== 'update') {
+        actions.splice(index, 1);
+      }
+    });
+    this.displayedColumns.push('actions');
+  }
+
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-    if (changes.products && changes.products.currentValue) {
-      this.productItems = new MatTableDataSource<Product>(this.products);
-      this.productItems.paginator = this.paginator;
+    if (changes.items && changes.items.currentValue) {
+      this.dataSource = new MatTableDataSource<Product>(this.items);
+      this.dataSource.paginator = this.paginator;
     }
+    if (changes.displayedColumns && changes.displayedColumns.currentValue) {
+      this.columns = this.displayedColumns;
+    }
+    if (changes.actions && changes.actions.currentValue) {
+      this.handleActions(this.actions);
+    }
+  }
+
+  delete(id) {
+    console.log(id);
+    // delete by id
+  }
+
+  update(id) {
+    console.log(id);
+    // update by id
   }
 }
