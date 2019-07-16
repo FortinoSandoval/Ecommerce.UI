@@ -1,6 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminLoginComponent } from './admin-login.component';
+import {
+  MatToolbarModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule
+} from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AdminLoginComponent', () => {
   let component: AdminLoginComponent;
@@ -8,9 +18,18 @@ describe('AdminLoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminLoginComponent ]
-    })
-    .compileComponents();
+      imports: [
+        MatToolbarModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        RouterTestingModule,
+        HttpClientModule,
+        MatInputModule,
+        BrowserAnimationsModule
+      ],
+      declarations: [AdminLoginComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
