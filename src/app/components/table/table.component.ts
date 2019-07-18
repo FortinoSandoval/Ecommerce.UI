@@ -1,13 +1,17 @@
+import { DeleteDialogComponent } from './../dialogs/delete-dialog.component';
 import {
   Component,
   OnInit,
   Input,
   ViewChild,
-  SimpleChanges
+  SimpleChanges,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-table',
@@ -18,11 +22,12 @@ export class TableComponent implements OnInit {
   @Input() items: any[];
   @Input() displayedColumns: string[];
   @Input() actions: string[];
+  @Output() deleteItem = new EventEmitter();
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   dataSource;
   columns;
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit() {}
 
@@ -51,12 +56,24 @@ export class TableComponent implements OnInit {
   }
 
   delete(id) {
-    console.log(id);
-    // delete by id
+    this.deleteItem.emit(id);
   }
 
   update(id) {
     console.log(id);
     // update by id
+  }
+
+  deleteDialogOpen(id): void {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      width: '250px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(answer => {
+      if (answer) {
+        this.delete(id);
+      }
+    });
   }
 }

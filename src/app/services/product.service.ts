@@ -13,4 +13,8 @@ export class ProductService {
   getAll() {
     return this.http.get<Product[]>(`${environment.apiUrl}/products`);
   }
+
+  deleteProduct(id) {
+    return this.http.delete(`${environment.apiUrl}/products/${id}`);
+  }
 }

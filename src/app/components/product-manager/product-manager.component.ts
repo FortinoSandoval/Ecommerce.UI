@@ -15,4 +15,10 @@ export class ProductManagerComponent implements OnInit {
       this.products = products;
     });
   }
+
+  deleteProduct(id) {
+    this.productService.deleteProduct(id).subscribe(() => {
+      this.products = this.products.filter(x => x.id !== id);
+    });
+  }
 }

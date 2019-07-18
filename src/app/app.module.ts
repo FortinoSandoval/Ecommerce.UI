@@ -16,6 +16,7 @@ import { ProductManagerComponent } from './components/product-manager/product-ma
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { TableComponent } from './components/table/table.component';
+import { DeleteDialogComponent } from './components/dialogs/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TableComponent } from './components/table/table.component';
     LogoutComponent,
     ProductManagerComponent,
     AdminHomeComponent,
-    TableComponent
+    TableComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ import { TableComponent } from './components/table/table.component';
     BrowserAnimationsModule,
     MaterialModule
   ],
+  entryComponents: [DeleteDialogComponent],
   exports: [MaterialModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

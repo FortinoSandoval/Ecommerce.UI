@@ -2,4 +2,5 @@
   [items]="products"
   [displayedColumns]="['name', 'description', 'quantity', 'price', 'category']"
   [actions]="['delete', 'update']"
+  (deleteItem)="deleteProduct($event)"
 ></app-table>
