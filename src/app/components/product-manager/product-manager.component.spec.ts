@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductManagerComponent } from './product-manager.component';
 import { MatTableModule, MatPaginatorModule } from '@angular/material';
-import { ProductsTableComponent } from '../products-table/products-table.component';
+import { TableComponent } from '../table/table.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -18,7 +18,7 @@ describe('ProductManagerComponent', () => {
         HttpClientModule,
         BrowserAnimationsModule
       ],
-      declarations: [ProductManagerComponent, ProductsTableComponent]
+      declarations: [ProductManagerComponent, TableComponent]
     }).compileComponents();
   }));
 

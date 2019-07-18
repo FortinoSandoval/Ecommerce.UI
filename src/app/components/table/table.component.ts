@@ -10,11 +10,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: 'app-products-table',
-  templateUrl: './products-table.component.html',
-  styleUrls: ['./products-table.component.less']
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.less']
 })
-export class ProductsTableComponent implements OnInit {
+export class TableComponent implements OnInit {
   @Input() items: any[];
   @Input() displayedColumns: string[];
   @Input() actions: string[];
