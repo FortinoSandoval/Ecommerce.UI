@@ -32,7 +32,9 @@ export class TableComponent implements OnInit {
   ngOnInit() {}
 
   handleActions(actions) {
-    if (actions.length === 0) return;
+    if (actions.length === 0) {
+      return;
+    }
     actions.forEach((action, index) => {
       action.toLowerCase();
       if (action !== 'delete' && action !== 'update') {

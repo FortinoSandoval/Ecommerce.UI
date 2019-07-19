@@ -1,6 +1,13 @@
 <app-table
   [items]="products"
-  [displayedColumns]="['name', 'description', 'quantity', 'price', 'category']"
+  [displayedColumns]="[
+    'name',
+    'description',
+    'quantity',
+    'photoUrl',
+    'price',
+    'category'
+  ]"
   [actions]="['delete', 'update']"
   (deleteItem)="deleteProduct($event)"
 ></app-table>

@@ -11,7 +11,7 @@
       *ngFor="let column of displayedColumns; index as i"
       matColumnDef="{{ column }}"
     >
-      <th mat-header-cell *matHeaderCellDef>{{ displayedColumns[i] }}</th>
+      <th mat-header-cell *matHeaderCellDef>{{ displayedColumns[i] | titlecase }}</th>
       <span *ngIf="column !== 'actions'">
         <td mat-cell *matCellDef="let item">{{ item[column] }}</td></span
       >
@@ -31,7 +31,7 @@
   </table>
 
   <mat-paginator
-    [pageSizeOptions]="[5, 10, 20]"
+    [pageSizeOptions]="[10, 15, 20]"
     showFirstLastButtons
   ></mat-paginator>
 </div>
