@@ -19,6 +19,15 @@ export class ProductUpdateComponent {
   returnUrl: string;
   invalidCredentials = false;
   allowedUser = true;
+  product = new Product();
+
+  categories = [
+    { id: 0, name: 'Category 1' },
+    { id: 1, name: 'Category 2' },
+    { id: 2, name: 'Category 3' },
+    { id: 3, name: 'Category 4' },
+    { id: 4, name: 'Category 5' }
+  ];
 
   ngOnInit(): void {
     this.addProductForm = this.formBuilder.group({
@@ -26,8 +35,8 @@ export class ProductUpdateComponent {
       description: ['', Validators.required],
       quantity: ['', Validators.required],
       price: ['', Validators.required],
-      photoUrl: [''],
-      category: ['', Validators.required]
+      category: ['', Validators.required],
+      photoUrl: ['']
     });
   }
 
@@ -39,15 +48,14 @@ export class ProductUpdateComponent {
     if (this.addProductForm.invalid) {
       return;
     }
-    const product = new Product();
 
-    product.name = this.f.name.value;
-    product.category = this.f.category.value;
-    product.description = this.f.description.value;
-    product.photoUrl = this.f.photoUrl.value;
-    product.price = this.f.price.value;
-    product.quantity = this.f.quantity.value;
+    this.product.name = this.f.name.value;
+    this.product.category = this.f.category.value;
+    this.product.description = this.f.description.value;
+    this.product.photoUrl = this.f.photoUrl.value;
+    this.product.price = this.f.price.value;
+    this.product.quantity = this.f.quantity.value;
 
-    this.dialogRef.close(product);
+    this.dialogRef.close(this.product);
   }
 }

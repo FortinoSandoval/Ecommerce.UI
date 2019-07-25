@@ -33,7 +33,12 @@
           <input matInput placeholder="Photo url" formControlName="photoUrl" />
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Category" formControlName="category" />
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="category">
+            <mat-option *ngFor="let category of categories" [value]="category.name">
+              {{category.name}}
+            </mat-option>
+          </mat-select>     
         </mat-form-field>
       </div>
       <div class="form-group add-button">

@@ -9,7 +9,8 @@ import {
   MatTableModule,
   MatPaginatorModule,
   MatDialogModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatSelectModule
 } from '@angular/material';
 
 const material = [
@@ -21,7 +22,8 @@ const material = [
   MatTableModule,
   MatPaginatorModule,
   MatDialogModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatSelectModule
 ];
 
 @NgModule({
