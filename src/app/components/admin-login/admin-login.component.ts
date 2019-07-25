@@ -20,7 +20,6 @@ export class AdminLoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
   ) {

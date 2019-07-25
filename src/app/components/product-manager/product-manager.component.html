@@ -11,3 +11,9 @@
   [actions]="['delete', 'update']"
   (deleteItem)="deleteProduct($event)"
 ></app-table>
+
+<button mat-fab (click)="addProductDialogOpen()">
+  <i class="material-icons action">
+    add
+  </i>
+</button>

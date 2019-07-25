@@ -1,0 +1,46 @@
+<div class="snackbar-dialog update">
+  <h2>{{ data.isAdding ? 'Add a new product' : 'Update product' }}</h2>
+  <div>
+    <form [formGroup]="addProductForm" (ngSubmit)="addProduct()">
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Product Name" formControlName="name" />
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Description"
+            formControlName="description"
+          />
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Product Quantity"
+            formControlName="quantity"
+            type="number"
+          />
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Price"
+            formControlName="price"
+            type="number"
+          />
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Photo url" formControlName="photoUrl" />
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Category" formControlName="category" />
+        </mat-form-field>
+      </div>
+      <div class="form-group add-button">
+        <button mat-raised-button color="primary">
+          {{ data.isAdding ? 'Add product' : 'Update product' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -17,4 +17,8 @@ export class ProductService {
   deleteProduct(id) {
     return this.http.delete(`${environment.apiUrl}/products/${id}`);
   }
+
+  addProduct(product) {
+    return this.http.post<Product>(`${environment.apiUrl}/products/`, product);
+  }
 }

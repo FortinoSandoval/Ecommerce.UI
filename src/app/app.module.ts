@@ -19,6 +19,7 @@ import { TableComponent } from './components/table/table.component';
 import { DeleteDialogComponent } from './components/dialogs/delete-dialog.component';
 import { SnackbarComponent } from './components/dialogs/snackbar.component';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
+import { ProductUpdateComponent } from './components/dialogs/product-update.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
     AdminHomeComponent,
     TableComponent,
     DeleteDialogComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    ProductUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,11 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  entryComponents: [DeleteDialogComponent, SnackbarComponent],
+  entryComponents: [
+    DeleteDialogComponent,
+    SnackbarComponent,
+    ProductUpdateComponent
+  ],
   exports: [MaterialModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
